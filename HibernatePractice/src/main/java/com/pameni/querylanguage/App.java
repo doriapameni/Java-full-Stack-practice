@@ -19,7 +19,6 @@ public class App {
     Session session = sf.openSession();
     
     Transaction tx = session.beginTransaction();
-    
     Random r = new Random();
     
 //    for (int i=1; i <=50; i++)
