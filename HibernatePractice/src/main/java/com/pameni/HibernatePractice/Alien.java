@@ -1,7 +1,11 @@
 package com.pameni.HibernatePractice;
 
+import javax.persistence.Cacheable;
 import javax.persistence.Entity;
 import javax.persistence.Id;
+
+import org.hibernate.annotations.Cache;
+import org.hibernate.annotations.CacheConcurrencyStrategy;
 
 /**
  * 
@@ -14,8 +18,14 @@ import javax.persistence.Id;
  *on the top of a variable
  *@Column(name="blablabla")
  *@Transient if you don't want a variable to be stored
+ *
+ *@Cacheable
+ *@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
+ *use both ate the same time if you want to enable L2 caching
  */
 @Entity
+@Cacheable
+@Cache(usage=CacheConcurrencyStrategy.READ_ONLY)
 public class Alien {
   
   @Id

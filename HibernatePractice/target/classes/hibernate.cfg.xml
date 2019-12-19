@@ -10,8 +10,11 @@
 		<property name="hibernate.connection.url">jdbc:postgresql://localhost:5432/postgres</property>
 		<property name="hibernate.connection.username">postgres</property>
 		<property name="hibernate.connection.password">Gaelle2013</property>
-		<property name="hbm2ddl.auto">create</property><!-- this line ask hibernate to create a table for you in the database -->
+		<property name="hbm2ddl.auto">update</property><!-- this line ask hibernate to create a table for you in the database -->
 		<!-- you can also use  <property name="hbm2ddl.auto">create</property> it will delete the existing table and create a new one with the data inside the class running-->
 		<property name="show_sql">true</property> <!-- use this if you want to see the sql queries being used -->
+		<!-- add the following set up for L2 cache -->
+		<property name="hibernate.cache.use_second_level_cache">true</property>
+		<property name="hibernate.cache.region.factory_class">org.hibernate.cache.ehcache.EhCacheRegionFactory</property>
 	</session-factory>
 </hibernate-configuration>

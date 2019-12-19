@@ -14,15 +14,14 @@ public class App
     public static void main( String[] args )
     {
         Alien telusko = new Alien();
-        AlienName an = new AlienName();
         
-        an.setFname("Yolande");
-        an.setLname("Toko");
-        an.setMname("Holland");
-        
-        telusko.setAid(101);
-        telusko.setAname(an);
-        telusko.setColor("purple");
+//        an.setFname("gom");
+//        an.setLname("lock");
+//        an.setMname("hiul");
+//        
+//        telusko.setAid(103);
+//        telusko.setAname(an);
+//        telusko.setColor("gold");
       
         Configuration con = new Configuration().configure().addAnnotatedClass(Alien.class);
         
@@ -32,12 +31,28 @@ public class App
         
         Transaction tx = session.beginTransaction();
         
-        session.save(telusko);
+        //session.save(telusko);
         
-        //telusko = (Alien) session.get(Alien.class, 101); //fetch data from database
-        
+        telusko = (Alien) session.get(Alien.class, 102); //fetch data from database
+        System.out.println(telusko);
+  
         tx.commit();
         
+        session.close();
+        
+        //creating a second session to practice L1 and L2 cache
+        //L2 cache is not provide by Hibernate by default
+        //you have to get it from a provider, EHcache, OScache
+        Session session1 = sf.openSession();
+        
+        Transaction tx1 = session1.beginTransaction();
+        
+        telusko = (Alien) session1.get(Alien.class, 102); //fetch data from database
         System.out.println(telusko);
+  
+        tx1.commit();
+        
+        session1.close();
+        
     }
 }
