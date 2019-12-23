@@ -71,6 +71,46 @@ public class Alien {
   }
 
   @Override
+public int hashCode() {
+	final int prime = 31;
+	int result = 1;
+	result = prime * result + aid;
+	result = prime * result + ((aname == null) ? 0 : aname.hashCode());
+	result = prime * result + ((color == null) ? 0 : color.hashCode());
+	result = prime * result + ((laps == null) ? 0 : laps.hashCode());
+	return result;
+}
+
+@Override
+public boolean equals(Object obj) {
+	if (this == obj)
+		return true;
+	if (obj == null)
+		return false;
+	if (getClass() != obj.getClass())
+		return false;
+	Alien other = (Alien) obj;
+	if (aid != other.aid)
+		return false;
+	if (aname == null) {
+		if (other.aname != null)
+			return false;
+	} else if (!aname.equals(other.aname))
+		return false;
+	if (color == null) {
+		if (other.color != null)
+			return false;
+	} else if (!color.equals(other.color))
+		return false;
+	if (laps == null) {
+		if (other.laps != null)
+			return false;
+	} else if (!laps.equals(other.laps))
+		return false;
+	return true;
+}
+
+@Override
   public String toString() {
     return "Alien [aid=" + aid + ", aname=" + aname + ", color=" + color + ", laps=" + laps + "]";
   }
